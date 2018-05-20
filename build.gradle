@@ -1,0 +1,35 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.13.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.flywaydb:flyway-gradle-plugin:5.0.7")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'org.flywaydb.flyway'
+apply plugin: 'application'
+
+group = 'cn.tws'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	runtime('com.h2database:h2')
+    compile('io.springfox:springfox-swagger2:2.8.0')
+	compile('io.springfox:springfox-swagger-ui:2.8.0')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
